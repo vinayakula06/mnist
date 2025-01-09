@@ -2,3 +2,7 @@ streamlit
 torch
 torchvision
 Pillow
+numpy
+pandas
+matplotlib
+seaborn
