@@ -48,7 +48,7 @@ uploaded_file = st.file_uploader("Upload a digit image", type=["png", "jpg", "jp
 if uploaded_file is not None:
     # Load and display the image
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)  # Updated parameter
 
     # Preprocess the image
     try:
