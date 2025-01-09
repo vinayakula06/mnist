@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://saivinay06:$HF_TOKEN@huggingface.co/spaces/saivinay06/mnist-hand-digit main
+        run: git push --force https://huggingface.co/spaces/saivinay06/mnist-hand-digit
