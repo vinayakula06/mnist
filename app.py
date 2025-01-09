@@ -48,7 +48,7 @@ def predict_image(img):
         return predicted.item()
 
 # Streamlit interface
-st.title("LeNet-5 Prediction")
+st.title("Hand Digit Recognition Using CNN")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
