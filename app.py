@@ -53,7 +53,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 
 if uploaded_file is not None:
     prediction = predict_image(uploaded_file.read())
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
     st.write(f"Predicted class: {prediction}")
 else:
     st.write("Please upload an image file.")
