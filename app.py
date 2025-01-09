@@ -6,7 +6,6 @@ from PIL import Image
 import io
 import numpy as np
 
-
 # Define the updated LeNet5 model class
 class LeNet5(nn.Module):
     def __init__(self):
@@ -33,7 +32,6 @@ model = LeNet5()
 model.load_state_dict(torch.load("mnist_digit_recognizer.pth", map_location=torch.device('cpu')))
 model.eval()
 
-
 # Define the prediction function
 def predict_image(img_data):
     # Load image from bytes and preprocess
@@ -49,14 +47,13 @@ def predict_image(img_data):
         _, predicted = torch.max(output, 1)
         return predicted.item()
 
-
 # Streamlit interface
 st.title("LeNet-5 MNIST Prediction")
 uploaded_file = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     prediction = predict_image(uploaded_file.read())
-    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
     st.write(f"Predicted Digit: {prediction}")
 else:
     st.write("Please upload an image file.")
