@@ -33,7 +33,16 @@ model = LeNet5()
 # Try to load the state dictionary with strict=False
 try:
     state_dict = torch.load("mnist_digit_recognizer.pth", map_location=torch.device('cpu'))
-    model.load_state_dict(state_dict, strict=False)  # Allow mismatch for layers that don't match
+    
+    # Load the state dict while ignoring mismatched layers
+    model.load_state_dict(state_dict, strict=False)
+    
+    # Manually initialize fc1 if there's a mismatch
+    if state_dict.get('fc1.weight') is None:
+        print("Initializing fc1 layer manually")
+        nn.init.xavier_uniform_(model.fc1.weight)  # Use Xavier initialization as an example
+        nn.init.zeros_(model.fc1.bias)
+
     st.success("Model loaded successfully.")
 except Exception as e:
     st.error(f"Error loading model: {e}")
