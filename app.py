@@ -30,9 +30,14 @@ class LeNet5(nn.Module):
 # Load the trained model
 model = LeNet5()
 
-# Try to load the state dictionary with strict=False
+# Load the state dictionary
 state_dict = torch.load("mnist_digit_recognizer.pth", map_location=torch.device('cpu'))
-model.load_state_dict(state_dict, strict=False)
+
+# Manually load the state dictionary
+missing_keys, unexpected_keys = model.load_state_dict(state_dict, strict=False)
+print(f"Missing keys: {missing_keys}")
+print(f"Unexpected keys: {unexpected_keys}")
+
 model.eval()
 
 # Define the prediction function
