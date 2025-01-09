@@ -1,3 +1,4 @@
+
 import streamlit as st
 import torch
 import torch.nn as nn
@@ -26,17 +27,15 @@ class LeNet5(nn.Module):
         x = torch.tanh(self.fc2(x))
         x = self.fc3(x)
         return x
-
+        
 # Load the trained model
 model = LeNet5()
 
 # Try to load the state dictionary with strict=False
 try:
     state_dict = torch.load("mnist_digit_recognizer.pth", map_location=torch.device('cpu'))
-    
     # Load the state dict while ignoring mismatched layers
     model.load_state_dict(state_dict, strict=False)
-    
     # Manually initialize fc1 if there's a mismatch
     if state_dict.get('fc1.weight') is None:
         print("Initializing fc1 layer manually")
@@ -72,3 +71,4 @@ if uploaded_file is not None:
     st.write(f"Predicted Digit: {prediction}")
 else:
     st.write("Please upload an image file.")
+
