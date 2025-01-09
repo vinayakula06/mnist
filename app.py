@@ -29,7 +29,10 @@ class LeNet5(nn.Module):
 
 # Load the trained model
 model = LeNet5()
-model.load_state_dict(torch.load("mnist_digit_recognizer.pth", map_location=torch.device('cpu')))
+
+# Try to load the state dictionary with strict=False
+state_dict = torch.load("mnist_digit_recognizer.pth", map_location=torch.device('cpu'))
+model.load_state_dict(state_dict, strict=False)
 model.eval()
 
 # Define the prediction function
